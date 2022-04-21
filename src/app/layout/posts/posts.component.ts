@@ -25,6 +25,7 @@ export class PostsComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.resetResult();
     let number = this.postIdForm.value.number;
 
     this.http.get<any>(`/posts/${number}`).subscribe(result => {
@@ -33,8 +34,12 @@ export class PostsComponent implements OnInit {
   }
 
   reset(): void {
-    this.result = '';
+    this.resetResult();
     this.postIdForm.reset();
+  }
+
+  resetResult(): void {
+    this.result = '';
   }
 
 }
